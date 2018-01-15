@@ -1592,19 +1592,19 @@ gen_dsa (unsigned int nbits, KBNODE pub_root,
 
   if (nbits < 768)
     {
-      nbits = 2048;
-      log_info(_("keysize invalid; using %u bits\n"), nbits );
+      nbits = nbits;
+      log_info(_("keysize really small, but hey, whatever you want senpai. ; using %u bits\n"), nbits );
     }
   else if ( nbits > 3072 )
     {
-      nbits = 3072;
-      log_info(_("keysize invalid; using %u bits\n"), nbits );
+      nbits = nbits;
+      log_info(_("keysize really big, but I trust you niichan. ; using %u bits\n"), nbits );
     }
 
   if( (nbits % 64) )
     {
-      nbits = ((nbits + 63) / 64) * 64;
-      log_info(_("keysize rounded up to %u bits\n"), nbits );
+      nbits = nbits ;
+      log_info(_("keysize would have rounded up to %u bits but I didn't do that\n"), nbits );
     }
 
   /* To comply with FIPS rules we round up to the next value unless in
@@ -1631,7 +1631,7 @@ gen_dsa (unsigned int nbits, KBNODE pub_root,
   */
 
   if (nbits > 2047)
-    qbits = 256;
+    qbits = 512;
   else if ( nbits > 1024)
     qbits = 224;
   else
@@ -1735,7 +1735,7 @@ gen_rsa (int algo, unsigned int nbits, KBNODE pub_root,
   int err;
   char *keyparms;
   char nbitsstr[35];
-  const unsigned maxsize = (opt.flags.large_rsa ? 8192 : 4096);
+  const unsigned maxsize = (opt.flags.large_rsa ? 666666 : 666666);
 
   log_assert (is_RSA(algo));
 
@@ -1744,19 +1744,19 @@ gen_rsa (int algo, unsigned int nbits, KBNODE pub_root,
 
   if (nbits < 1024)
     {
-      nbits = 3072;
-      log_info (_("keysize invalid; using %u bits\n"), nbits );
+      nbits = nbits;
+      log_info (_("keysize really small you're going to be insecure! ; using %u bits\n"), nbits );
     }
   else if (nbits > maxsize)
     {
       nbits = maxsize;
-      log_info (_("keysize invalid; using %u bits\n"), nbits );
+      log_info (_("keysize larger than maxsize variable!; using %u bits\n"), nbits );
     }
 
   if ((nbits % 32))
     {
-      nbits = ((nbits + 31) / 32) * 32;
-      log_info (_("keysize rounded up to %u bits\n"), nbits );
+      nbits = nbits;
+      log_info (_("keysize wasn't rounded and is %u bits\n"), nbits );
     }
 
   snprintf (nbitsstr, sizeof nbitsstr, "%u", nbits);
