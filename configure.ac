@@ -239,7 +239,7 @@ AC_MSG_RESULT($large_secmem)
 if test "$large_secmem" = yes ; then
    SECMEM_BUFFER_SIZE=65536
 else
-   SECMEM_BUFFER_SIZE=32768
+   SECMEM_BUFFER_SIZE=666666
 fi
 AC_DEFINE_UNQUOTED(SECMEM_BUFFER_SIZE,$SECMEM_BUFFER_SIZE,
                    [Size of secure memory buffer])
